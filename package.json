@@ -1,0 +1,18 @@
+{
+  "name": "weather-bot",
+  "version": "1.0.0",
+  "description": "Weather Bot",
+  "main": "source/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tumlee",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^1.0.0",
+    "@discordjs/rest": "^1.0.0",
+    "discord-api-types": "^0.36.3",
+    "discord.js": "^14.0.3",
+    "weather-js": "^2.0.0"
+  }
+}
