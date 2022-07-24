@@ -3,15 +3,12 @@ const { handleCommand } = require('../command-handler.js');
 module.exports = {
 	name: 'messageCreate',
 	execute(client, message) {
-		console.log('test');
 		let content = message.content;
 		let user = message.author;
 		let channel = message.channel;
 
 		if(client.user.id === user.id)
 			return;
-
-		console.log('Message detected.');
 
 		if(message.guild) {
 			message.guild.members.fetch(user).then(guildMember => {
