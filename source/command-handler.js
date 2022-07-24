@@ -62,10 +62,13 @@ function handleCommand(content, userId, displayName, isPM) {
                         if(err != null) {
                             let message = err.message ?? 'Unknown error.';
                             resolve({error: message});
+                            return;
                         }
 
-                        if(result == null || result[0] == null)
+                        if(result == null || result[0] == null) {
                             resolve({error: 'Could not retrieve weather data for this location.'});
+                            return;
+                        }
 
                         let current = result[0].current;
                         let skyText = current.skytext;
