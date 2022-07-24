@@ -4,7 +4,7 @@
   "description": "Weather Bot",
   "main": "source/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node source/index.js"
   },
   "author": "tumlee",
   "license": "ISC",
