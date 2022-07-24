@@ -57,6 +57,9 @@ function handleCommand(content, userId, displayName, isPM) {
 
                 return new Promise((resolve, reject) => {
                     weather.find({search: zipCode, degreeType: 'F'}, (err, result) => {
+                        if(result[0] == null)
+                            return {error: 'Could not retrieve weather data for this location.'};
+
                         let current = result[0].current;
                         let skyText = current.skytext;
                         let temperature = current.temperature;
@@ -113,7 +116,7 @@ function handleCommand(content, userId, displayName, isPM) {
         return {error: 'This command can only be used in a PM (spam prevention).'};
 
     try {
-        return commandHandler.execute();
+        return Promise.resolve(commandHandler.execute());
     } catch(commandError) {
         console.log({commandError});
         return {error: 'Handling this command resulted in an unexpected error.'};
