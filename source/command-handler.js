@@ -59,6 +59,11 @@ function handleCommand(content, userId, displayName, isPM) {
                     weather.find({search: zipCode, degreeType: 'F'}, (err, result) => {
                         console.log({err, result});
 
+                        if(err != null) {
+                            let message = err.message ?? 'Unknown error.';
+                            return {error: message};
+                        }
+
                         if(result == null || result[0] == null)
                             return {error: 'Could not retrieve weather data for this location.'};
 
