@@ -57,7 +57,9 @@ function handleCommand(content, userId, displayName, isPM) {
 
                 return new Promise((resolve, reject) => {
                     weather.find({search: zipCode, degreeType: 'F'}, (err, result) => {
-                        if(result[0] == null)
+                        console.log({err, result});
+
+                        if(result == null || result[0] == null)
                             return {error: 'Could not retrieve weather data for this location.'};
 
                         let current = result[0].current;
@@ -67,8 +69,6 @@ function handleCommand(content, userId, displayName, isPM) {
                         let humidity = current.humidity;
                         let windDisplay = current.winddisplay;
                         let imageUrl = current.imageUrl;
-
-                        console.log({current});
 
                         let embed = {
                             fields: [
