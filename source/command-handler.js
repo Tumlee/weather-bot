@@ -56,6 +56,7 @@ function handleCommand(content, userId, displayName, isPM) {
                     return {message: 'Usage: `!weather [zipCode]`'}
 
                 return new Promise((resolve, reject) => {
+                    console.log(`Performing weather lookup for ${zipCode}...`);
                     weather.find({search: zipCode, degreeType: 'F'}, (err, result) => {
                         console.log({err, result});
 
@@ -77,6 +78,7 @@ function handleCommand(content, userId, displayName, isPM) {
                         let humidity = current.humidity;
                         let windDisplay = current.winddisplay;
                         let imageUrl = current.imageUrl;
+                        let observationPoint = current.observationpoint;
 
                         let embed = {
                             fields: [
@@ -95,6 +97,10 @@ function handleCommand(content, userId, displayName, isPM) {
                                 {
                                     name: 'Wind',
                                     value: windDisplay,
+                                },
+                                {
+                                    name: 'Observation Point',
+                                    value: observationPoint
                                 },
                             ]
                         };

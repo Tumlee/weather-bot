@@ -17,11 +17,11 @@ module.exports = {
 
 					if(displayName == null)
 						displayName = user.username;
-	
-					console.log({content, displayName});
 
 					if(!content.startsWith('!'))
 						return;
+
+					console.log({content, displayName});
 
 					respond(message, content, user.id, channel, displayName, false);
 				} catch(error) {
